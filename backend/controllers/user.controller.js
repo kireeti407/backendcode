@@ -138,19 +138,24 @@ export const loginUser = async (req, res) => {
       profile: user.profile,
     };
 
-    return res
-      .status(200)
-      .res.cookie("token", token, {
+    // return res
+    //   .status(200)
+      res.cookie("token", token, {
           httpOnly: true,
           secure: true,
           sameSite: "None",
           maxAge: 86400000,
       })
-      .json({
-        message: `Welcome back ${user.fullname}`,
-        user,
-        success: true,
-      });
+      // .json({
+      //   message: `Welcome back ${user.fullname}`,
+      //   user,
+      //   success: true,
+      // });
+    return res.status(200).json({
+      message: `Welcome back ${user.fullname}`,
+      user,
+      success: true,
+    });
   } catch (error) {
     console.log(error, "LOGIN USER ERROR.");
   }
