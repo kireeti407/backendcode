@@ -145,7 +145,7 @@ export const loginUser = async (req, res) => {
           secure: true,
           sameSite: "None",
           maxAge: 86400000,
-    });
+      })
       .json({
         message: `Welcome back ${user.fullname}`,
         user,
